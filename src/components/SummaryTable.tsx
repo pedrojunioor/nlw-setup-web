@@ -44,10 +44,9 @@ export function SummaryTable() {
         })}
       </div>
       <div className="grid grid-rows-7 grid-flow-col gap-3">
-    
-        {summaryDates.map((date, i) => {
+
+        {summary.length && summaryDates.map((date, i) => {
           const dayInSummary = summary.find(day => {
-            console.log(day)
             return dayjs(date).isSame(day.date, 'day')
           })
           return (
@@ -55,7 +54,7 @@ export function SummaryTable() {
               key={date.toISOString()}
               date={date}
               amount={dayInSummary?.amount}
-              completed={dayInSummary?.completed}
+              defaultCompleted={dayInSummary?.completed}
             />
           )
         })}
